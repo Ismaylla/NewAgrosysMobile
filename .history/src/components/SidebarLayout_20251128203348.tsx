@@ -26,7 +26,7 @@ const SIDEBAR_WIDTH = width * 0.75;
 
 export default function SidebarLayout({
   children,
-  systemName = "AGROSYS",
+  systemName = "Meu Sistema",
 }: SidebarLayoutProps) {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation();
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: colors.primary,
     borderBottomWidth: 1,
-    borderColor: colors.primary,
+    borderColor: "#ddd",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -175,14 +175,14 @@ const styles = StyleSheet.create({
   sidebar: {
     position: "absolute",
     left: 0,
-    top: 90, // sidebar abaixo da barra superior
+    top: 60, // sidebar abaixo da barra superior
     bottom: 0,
     width: SIDEBAR_WIDTH,
     backgroundColor: colors.primary,
     paddingTop: 20,
     paddingHorizontal: 20,
     borderRightWidth: 1,
-    borderColor: colors.primary,
+    borderColor: "#ddd",
     zIndex: 30,
   },
 
@@ -195,6 +195,5 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     padding: 16,
-    backgroundColor: colors.background,
   },
 });

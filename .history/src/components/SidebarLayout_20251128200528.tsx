@@ -12,9 +12,6 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../theme/colors";
-import { MenuButton } from "../components/MenuButton";
-import { useNavigation } from "@react-navigation/native";
 
 interface SidebarLayoutProps {
   children: ReactNode;
@@ -26,17 +23,16 @@ const SIDEBAR_WIDTH = width * 0.75;
 
 export default function SidebarLayout({
   children,
-  systemName = "AGROSYS",
+  systemName = "Meu Sistema",
 }: SidebarLayoutProps) {
   const [open, setOpen] = useState(false);
-  const navigation = useNavigation();
 
   const animatedX = useRef(new Animated.Value(-SIDEBAR_WIDTH)).current;
   const overlayOpacity = useRef(new Animated.Value(0)).current;
 
   // Altura segura no topo (iPhone + Android)
-  const SAFE_TOP =
-    Platform.OS === "android" ? StatusBar.currentHeight ?? 24 : 24;
+const SAFE_TOP =
+  Platform.OS === "android" ? (StatusBar.currentHeight ?? 24) : 24;
 
   const openSidebar = () => {
     setOpen(true);
@@ -84,17 +80,13 @@ export default function SidebarLayout({
       {/* TOPBAR sempre visível */}
       <View style={[styles.topbar, { paddingTop: SAFE_TOP }]}>
         <TouchableOpacity onPress={toggleSidebar}>
-          <Ionicons name="menu" size={28} color={colors.white} />
+          <Ionicons name="menu" size={28} color="#333" />
         </TouchableOpacity>
 
         <Text style={styles.systemName}>{systemName}</Text>
 
         <TouchableOpacity>
-          <Ionicons
-            name="notifications-outline"
-            size={26}
-            color={colors.white}
-          />
+          <Ionicons name="notifications-outline" size={26} color="#333" />
         </TouchableOpacity>
       </View>
 
@@ -121,20 +113,19 @@ export default function SidebarLayout({
           },
         ]}
       >
-        <MenuButton title="Gestão de Colheitas" />
+        <Text style={styles.sidebarTitle}>Menu</Text>
 
-        <MenuButton title="Gestão de Vendas" />
+        <TouchableOpacity style={styles.menuItem}>
+          <Text style={styles.menuText}>Página Inicial</Text>
+        </TouchableOpacity>
 
-        <MenuButton title="Gestão de Ferramentas" />
+        <TouchableOpacity style={styles.menuItem}>
+          <Text style={styles.menuText}>Relatórios</Text>
+        </TouchableOpacity>
 
-        <MenuButton title="Cadastros Gerais" />
-
-        <MenuButton title="Meu Perfil" />
-
-        <MenuButton
-          title="Sair"
-          onPress={() => navigation.navigate("Home" as never)}
-        />
+        <TouchableOpacity style={styles.menuItem}>
+          <Text style={styles.menuText}>Configurações</Text>
+        </TouchableOpacity>
       </Animated.View>
 
       {/* CONTEÚDO */}
@@ -151,9 +142,9 @@ const styles = StyleSheet.create({
   topbar: {
     height: 90,
     paddingHorizontal: 16,
-    backgroundColor: colors.primary,
+    backgroundColor: "#fff",
     borderBottomWidth: 1,
-    borderColor: colors.primary,
+    borderColor: "#ddd",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -163,7 +154,6 @@ const styles = StyleSheet.create({
   systemName: {
     fontSize: 18,
     fontWeight: "600",
-    color: colors.white,
   },
 
   overlay: {
@@ -175,14 +165,14 @@ const styles = StyleSheet.create({
   sidebar: {
     position: "absolute",
     left: 0,
-    top: 90, // sidebar abaixo da barra superior
+    top: 60, // sidebar abaixo da barra superior
     bottom: 0,
     width: SIDEBAR_WIDTH,
-    backgroundColor: colors.primary,
+    backgroundColor: "#fff",
     paddingTop: 20,
     paddingHorizontal: 20,
     borderRightWidth: 1,
-    borderColor: colors.primary,
+    borderColor: "#ddd",
     zIndex: 30,
   },
 
@@ -192,9 +182,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  menuItem: {
+    paddingVertical: 12,
+  },
+
+  menuText: {
+    fontSize: 16,
+  },
+
   page: {
     flex: 1,
     padding: 16,
-    backgroundColor: colors.background,
   },
 });

@@ -26,7 +26,7 @@ const SIDEBAR_WIDTH = width * 0.75;
 
 export default function SidebarLayout({
   children,
-  systemName = "AGROSYS",
+  systemName = "Agrosys",
 }: SidebarLayoutProps) {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation();
@@ -195,6 +195,5 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     padding: 16,
-    backgroundColor: colors.background,
   },
 });
