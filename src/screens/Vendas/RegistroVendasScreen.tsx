@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
-import SidebarLayout from "../components/SidebarLayout";
-import { FormBackground } from '../components/FormBackground'
-import { RowGrid } from "../components/RowGrid";
-import { Input } from "../components/Input";
-import { Select } from "../components/Select";
-import { DateInput } from "../components/DateInput";
-import {PrimaryButton} from '../components/PrimaryButton';
-import { CancelButton } from "../components/CancelButton";
-import { TextArea } from "../components/TextArea";
-import { RowCentralized } from "../components/RowCentralized";
+import { useNavigation } from "@react-navigation/native";
 
-export default function VendasScreen() {
+// Components
+import SidebarLayout from "../../components/SidebarLayout";
+import { FormBackground } from "../../components/FormBackground";
+import { RowGrid } from "../../components/RowGrid";
+import { Input } from "../../components/Input";
+import { Select } from "../../components/Select";
+import { DateInput } from "../../components/DateInput";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { CancelButton } from "../../components/CancelButton";
+import { TextArea } from "../../components/TextArea";
+import { RowCentralized } from "../../components/RowCentralized";
+import { FormHeader } from "../../components/FormHeader";
+
+export default function RegistroVendasScreen() {
   const [ciclo, setCiclo] = useState('');
   const [uap, setUAP] = useState('');
   const [responsavel, setResponsavel] = useState('');
@@ -20,12 +24,19 @@ export default function VendasScreen() {
   const [quantidade, setQuantidade] = useState('');
   const [unidade, setUnidade] = useState('');
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const navigation = useNavigation();
+  
 
   return (
     <SidebarLayout>
       <View>
-        <Text>Registrar Colheita</Text>
-        <Text>Registre uma nova colheita</Text>
+
+        <FormHeader
+          title="Registrar Colheita"
+          subtitle="Registre uma nova colheita"
+           onBack={() => navigation.navigate("Home" as never)}
+        />
+
         <FormBackground>
 
           <RowGrid>
@@ -113,7 +124,7 @@ export default function VendasScreen() {
 
         </FormBackground>
 
-        <RowCentralized marginTop={40}>
+        <RowCentralized marginTop={35}>
             <PrimaryButton title="Salvar Colheita" onPress={() => {}} />
         </RowCentralized>
       </View>

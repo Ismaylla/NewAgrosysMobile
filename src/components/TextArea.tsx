@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 12,
     borderRadius: 10,
-    minHeight: 120,     // altura grande para observações
-    width: "100%",      // ocupa toda a largura
+    minHeight: 120,     
+    width: "100%",    
     fontSize: 16,
   },
 });
