@@ -32,7 +32,7 @@ export default function RegistroProdutoScreen() {
     {title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos" as never),},
     {title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas" as never),},
     {title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda" as never),},
-    { title: "Meu Perfil", onPress: () => {} },
+    { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil" as never) },
     { title: "Sair", onPress: () => navigation.navigate("Home" as never) },
   ];
 
@@ -134,7 +134,7 @@ export default function RegistroProdutoScreen() {
 
         {/* Botão Salvar */}
         <RowCentralized marginTop={35}>
-          <PrimaryButton title="Registrar Produto" onPress={() => {}} />
+          <PrimaryButton title="Registrar Produto" onPress={() => navigation.navigate("ListagemProdutos" as never)} />
         </RowCentralized>
       </ScrollView>
     </SidebarLayout>

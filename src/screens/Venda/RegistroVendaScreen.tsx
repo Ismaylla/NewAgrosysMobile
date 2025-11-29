@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -14,8 +15,17 @@ import { CancelButton } from "../../components/CancelButton";
 import { RowCentralized } from "../../components/RowCentralized";
 import { FormHeader } from "../../components/FormHeader";
 
+// ✅ Menu lateral
+const getMenuItems = (navigation: any) => [
+  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
+  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
+  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
+  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
+  { title: "Sair", onPress: () => navigation.navigate("Home") },
+];
+
 export default function RegistroVendaScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
 
   const [uap, setUap] = useState("");
   const [produto, setProduto] = useState("");
@@ -27,12 +37,14 @@ export default function RegistroVendaScreen() {
   const [desconto, setDesconto] = useState("");
 
   return (
-    <SidebarLayout>
+    <SidebarLayout headerTitle="Gestão de Vendas" menuItems={getMenuItems(navigation)}>
       <View>
+
+        {/* ✅ HEADER COM BOTÃO DE VOLTAR FUNCIONANDO */}
         <FormHeader
           title="Registrar Venda"
           subtitle="Registrar uma nova venda"
-          onBack={() => navigation.navigate("Content" as never)}
+          onBack={() => navigation.goBack()}
         />
 
         <FormBackground>
@@ -43,14 +55,21 @@ export default function RegistroVendaScreen() {
               placeholder="Selecione UAP"
               value={uap}
               onChange={setUap}
-              options={[{ label: "UAP 1", value: "1" }, { label: "UAP 2", value: "2" }]}
+              options={[
+                { label: "UAP 1", value: "1" },
+                { label: "UAP 2", value: "2" },
+              ]}
             />
+
             <Select
               label="Produto *"
               placeholder="Selecione Produto"
               value={produto}
               onChange={setProduto}
-              options={[{ label: "Produto A", value: "A" }, { label: "Produto B", value: "B" }]}
+              options={[
+                { label: "Produto A", value: "A" },
+                { label: "Produto B", value: "B" },
+              ]}
             />
           </RowGrid>
 
@@ -62,6 +81,7 @@ export default function RegistroVendaScreen() {
               value={quant}
               onChange={setQuant}
             />
+
             <DateInput
               label="Data *"
               placeholder="dd/mm/aaaa"
@@ -82,6 +102,7 @@ export default function RegistroVendaScreen() {
                 { label: "Cartão", value: "cartao" },
               ]}
             />
+
             <Select
               label="Condição de Entrega *"
               placeholder="Selecione"
@@ -102,6 +123,7 @@ export default function RegistroVendaScreen() {
               value={precoUnitario}
               onChange={setPrecoUnitario}
             />
+
             <Input
               label="Desconto (%)"
               placeholder="%"
@@ -121,9 +143,9 @@ export default function RegistroVendaScreen() {
             editable={false}
           />
 
-          {/* Botão Cancelar */}
+          {/* ✅ Botão Cancelar agora volta corretamente */}
           <RowCentralized marginTop={20}>
-            <CancelButton title="Cancelar" onPress={() => navigation.goBack ()} />
+            <CancelButton title="Cancelar" onPress={() => navigation.goBack()} />
           </RowCentralized>
         </FormBackground>
 
@@ -131,6 +153,7 @@ export default function RegistroVendaScreen() {
         <RowCentralized marginTop={35}>
           <PrimaryButton title="Salvar Venda" onPress={() => {}} />
         </RowCentralized>
+
       </View>
     </SidebarLayout>
   );
