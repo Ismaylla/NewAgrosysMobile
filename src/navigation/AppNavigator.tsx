@@ -16,6 +16,7 @@ import ListagemColheitaScreen from "../screens/Colheita/ListagemColheitaScreen";
 
 //Produto
 import RegistroProdutoScreen from "../screens/Produto/RegistroProdutoScreen";
+import ListagemProdutoScreen from "../screens/Produto/ListagemProdutoScreen";
 
 //Venda
 import RegistroVendaScreen from "../screens/Venda/RegistroVendaScreen";
@@ -41,6 +42,7 @@ export default function AppNavigator() {
         <Stack.Screen name="ListagemColheita" component={ListagemColheitaScreen} />
         
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
+        <Stack.Screen name="ListagemProdutos" component={ListagemProdutoScreen} />
         <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
         <Stack.Screen name="Content" component={ContentScreen} />
       </Stack.Navigator>

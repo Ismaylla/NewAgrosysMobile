@@ -12,18 +12,20 @@ import { PrimaryButton } from "../../components/PrimaryButton";
 /* -------------------------------------------------------------------------- */
 /* 🎯 DADOS MOCKADOS                                                           */
 /* -------------------------------------------------------------------------- */
-const MOCK_COLHEITAS = [
+const MOCK_PRODUTOS = [
   {
-    id: "COL-001",
-    data: "10/05/2025",
-    uap: "UAP 01",
-    responsavel: "João Silva",
+    id: "PROD-001",
+    nome: "Produto A",
+    categoria: "Categoria A",
+    quantidade: "100",
+    local: "Armazém 1",
   },
   {
-    id: "COL-002",
-    data: "12/05/2025",
-    uap: "UAP 03",
-    responsavel: "Mariana",
+    id: "PROD-002",
+    nome: "Produto B",
+    categoria: "Categoria B",
+    quantidade: "50",
+    local: "Armazém 2",
   },
 ];
 
@@ -39,25 +41,25 @@ const getMenuItems = (navigation: any) => [
   { title: "Sair", onPress: () => navigation.navigate("Home") },
 ];
 
-export default function ListagemColheitaScreen() {
+
+export default function ListagemProdutoScreen() {
   const navigation = useNavigation();
 
   /* ------------------------------------------------------------------------ */
   /* 🔎 ESTADOS DE FILTRO                                                      */
   /* ------------------------------------------------------------------------ */
-  const [filtroUap, setFiltroUap] = useState("");
-  const [filtroAno, setFiltroAno] = useState("");
-  const [filtroResponsavel, setFiltroResponsavel] = useState("");
+  const [filtroCategoria, setFiltroCategoria] = useState("");
+  const [filtroNome, setFiltroNome] = useState("");
 
   return (
-    <SidebarLayout headerTitle="Gestão de Colheitas" menuItems={getMenuItems(navigation)}>
+    <SidebarLayout headerTitle="Gestão de Produtos" menuItems={getMenuItems(navigation)}>
 
       {/* -------------------------------------------------------------------- */}
       {/* 🔙 CABEÇALHO                                                         */}
       {/* -------------------------------------------------------------------- */}
       <FormHeader
-        title="Gestão de Colheitas"
-        subtitle="Controle e acompanhamento das colheitas"
+        title="Gestão de Produtos"
+        subtitle="Controle e acompanhamento dos produtos"
         onBack={() => navigation.navigate("Content" as never)}
       />
 
@@ -70,36 +72,19 @@ export default function ListagemColheitaScreen() {
           icon="filter"
           filters={[
             {
-              id: "ano",
-              placeholder: "Ano",
-              value: filtroAno,
-              onChange: setFiltroAno,
-              options: [
-                { label: "2025", value: "2025" },
-                { label: "2024", value: "2024" },
-                { label: "2023", value: "2023" },
-              ],
+              id: "nome",
+              placeholder: "Nome",
+              value: filtroNome,
+              onChange: setFiltroNome,
             },
             {
-              id: "uap",
-              placeholder: "UAP",
-              value: filtroUap,
-              onChange: setFiltroUap,
+              id: "categoria",
+              placeholder: "Categoria",
+              value: filtroCategoria,
+              onChange: setFiltroCategoria,
               options: [
-                { label: "UAP 01", value: "01" },
-                { label: "UAP 02", value: "02" },
-                { label: "UAP 03", value: "03" },
-              ],
-            },
-            {
-              id: "responsavel",
-              placeholder: "Responsável",
-              value: filtroResponsavel,
-              onChange: setFiltroResponsavel,
-              options: [
-                { label: "João", value: "joao" },
-                { label: "Mariana", value: "mariana" },
-                { label: "Pedro", value: "pedro" },
+                { label: "Categoria A", value: "a" },
+                { label: "Categoria B", value: "b" },
               ],
             },
           ]}
@@ -107,22 +92,22 @@ export default function ListagemColheitaScreen() {
       </View>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 📦 LISTA DE COLHEITAS                                                */}
+      {/* 📦 LISTA DE PRODUTOS                                                  */}
       {/* -------------------------------------------------------------------- */}
       <View style={{ flex: 1 }}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }}>
-          {MOCK_COLHEITAS.map((item) => (
+          {MOCK_PRODUTOS.map((item) => (
             <CardListItem
               key={item.id}
-              title={`Colheita ${item.id}`}
+              title={item.nome} // O nome será o "id grande"
               titleIcon="chevron-right"
               fields={[
-                { label: "Data", value: item.data, icon: "calendar" },
-                { label: "UAP", value: item.uap, icon: "map-pin" },
-                { label: "Responsável", value: item.responsavel, icon: "user" },
+                { label: "Categoria", value: item.categoria, icon: "layers" },
+                { label: "Quantidade", value: item.quantidade, icon: "archive" },
+                { label: "Local", value: item.local, icon: "map-pin" },
               ]}
               onPress={() =>
-                navigation.navigate("RegistroColheita" as never, { id: item.id })
+                navigation.navigate("RegistroProdutos" as never, { id: item.id })
               }
             />
           ))}
@@ -133,8 +118,8 @@ export default function ListagemColheitaScreen() {
         {/* ------------------------------------------------------------------ */}
         <View style={{ padding: 20, paddingBottom: 0, alignItems: "center" }}>
           <PrimaryButton
-            title="+ Cadastrar Colheita"
-            onPress={() => navigation.navigate("RegistroColheitas" as never)}
+            title="+ Cadastrar Produto"
+            onPress={() => navigation.navigate("RegistroProdutos" as never)}
           />
         </View>
       </View>
