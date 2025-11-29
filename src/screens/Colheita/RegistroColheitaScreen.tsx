@@ -27,12 +27,11 @@ export default function RegistroColheitaScreen() {
 
   const navigation = useNavigation();
 
-  // MENU CORRETO — IGUAL AO DO CONTENTSCREEN
   const menuItems = [
-    { title: "Gestão de Colheitas", onPress: () => navigation.navigate("RegistroColheita" as never) },
+    {title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos" as never),},
+    {title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas" as never),},
     { title: "Gestão de Vendas", onPress: () => {} },
-    { title: "Gestão de Ferramentas", onPress: () => {} },
-    { title: "Cadastros Gerais", onPress: () => {} },
+
     { title: "Meu Perfil", onPress: () => {} },
     { title: "Sair", onPress: () => navigation.navigate("Home" as never) },
   ];
