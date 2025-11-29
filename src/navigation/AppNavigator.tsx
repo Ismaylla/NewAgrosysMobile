@@ -38,8 +38,8 @@ export default function AppNavigator() {
           Bloco de Colheita Resolvido:
           Mantido RegistroColheita e adicionado ListagemColheita.
         */}
-        <Stack.Screen name="RegistroColheita" component={RegistroColheitaScreen} />
-        <Stack.Screen name="ListagemColheita" component={ListagemColheitaScreen} />
+        <Stack.Screen name="RegistroColheitas" component={RegistroColheitaScreen} />
+        <Stack.Screen name="ListagemColheitas" component={ListagemColheitaScreen} />
         
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
         <Stack.Screen name="ListagemProdutos" component={ListagemProdutoScreen} />

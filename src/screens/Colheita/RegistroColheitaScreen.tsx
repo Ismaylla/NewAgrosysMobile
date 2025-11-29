@@ -42,7 +42,7 @@ export default function RegistroColheitaScreen() {
         <FormHeader
           title="Registrar Colheita"
           subtitle="Registre uma nova colheita"
-          onBack={() => navigation.navigate("ListagemColheita" as never)}
+          onBack={() => navigation.navigate("ListagemColheitas" as never)}
         />
 
         <FormBackground>
