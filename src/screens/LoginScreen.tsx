@@ -79,7 +79,7 @@ export default function LoginScreen() {
 
             <PrimaryButton
               title="ENTRAR" onPress={() => navigation.navigate("Content" as never)}
-
+            />
           </View>
 
         </FormBackground>
