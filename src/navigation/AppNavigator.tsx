@@ -12,6 +12,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 //Colheita
 import RegistroColheitaScreen from "../screens/Colheita/RegistroColheitaScreen";
+import ListagemColheitaScreen from "../screens/Colheita/ListagemColheitaScreen";
 
 //Produto
 import RegistroProdutoScreen from "../screens/Produto/RegistroProdutoScreen";
@@ -32,6 +33,7 @@ export default function AppNavigator() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="RegistroColheitas" component={RegistroColheitaScreen} />
+        <Stack.Screen name="ListagemColheitas" component={ListagemColheitaScreen} />
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
         <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
         <Stack.Screen name="Content" component={ContentScreen} />
