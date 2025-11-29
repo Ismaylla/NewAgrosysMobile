@@ -24,8 +24,8 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"   
-        screenOptions={{ headerShown: false }} 
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -33,6 +33,7 @@ export default function AppNavigator() {
         <Stack.Screen name="RegistroColheitas" component={RegistroColheitasScreen} />
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
         <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
+        <Stack.Screen name="Content" component={ContentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
