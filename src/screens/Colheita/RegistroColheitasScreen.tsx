@@ -15,7 +15,7 @@ import { TextArea } from "../../components/TextArea";
 import { RowCentralized } from "../../components/RowCentralized";
 import { FormHeader } from "../../components/FormHeader";
 
-export default function RegistroVendasScreen() {
+export default function RegistroColheitasScreen() {
   const [ciclo, setCiclo] = useState('');
   const [uap, setUAP] = useState('');
   const [responsavel, setResponsavel] = useState('');

@@ -2,10 +2,21 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import LoginScreen from "../screens/LoginScreen";
+//Telas básicas
 import HomeScreen from "../screens/HomeScreen";
+
+//Auth
+import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
-import RegistroVendasScreen from "../screens/Vendas/RegistroVendasScreen";
+
+//Colheita
+import RegistroColheitasScreen from "../screens/Colheita/RegistroColheitasScreen";
+
+//Produto
+import RegistroProdutoScreen from "../screens/Produto/RegistroProdutoScreen";
+
+//Venda
+import RegistroVendaScreen from "../screens/Venda/RegistroVendaScreen";
 
 const Stack = createStackNavigator();
 
@@ -19,7 +30,9 @@ export default function AppNavigator() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="RegistroVendas" component={RegistroVendasScreen} />
+        <Stack.Screen name="RegistroColheitas" component={RegistroColheitasScreen} />
+        <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
+        <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
