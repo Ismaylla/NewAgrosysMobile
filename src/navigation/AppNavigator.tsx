@@ -6,6 +6,8 @@ import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import ContentScreen from "../screens/ContentScreen";
+import RegistroColheitaScreen from "../screens/Colheitas/RegistroColheitaScreen";
+
 
 const Stack = createStackNavigator();
 
@@ -20,8 +22,9 @@ export default function AppNavigator() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
 
-        {/* Rota corrigida */}
+        {/* Tela inicial correta */}
         <Stack.Screen name="Content" component={ContentScreen} />
+        <Stack.Screen name="RegistroColheita" component={RegistroColheitaScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

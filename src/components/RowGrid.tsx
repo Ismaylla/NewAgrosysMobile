@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ViewStyle} from "react-native";
 
 interface RowGridProps {
   children: React.ReactNode[];
@@ -41,6 +41,7 @@ export function RowGrid({
 
 const styles = StyleSheet.create({
   row: {
+    
     flexDirection: "row",
   },
   item: {
