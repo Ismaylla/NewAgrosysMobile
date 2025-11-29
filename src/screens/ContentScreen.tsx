@@ -14,7 +14,7 @@ export default function ContentScreen() {
   const menuItems = [
     {
       title: "Gestão de Colheitas",
-      onPress: () => navigation.navigate("ListagemColheitas" as never),
+      onPress: () => navigation.navigate("ListagemColheita" as never),
     },
     { title: "Gestão de Vendas", onPress: () => {} },
     { title: "Gestão de Ferramentas", onPress: () => {} },
