@@ -80,7 +80,7 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.justifyButton}>
-            <PrimaryButton title="ENTRAR" onPress={() => navigation.navigate("Vendas" as never)} />
+            <PrimaryButton title="ENTRAR" onPress={() => navigation.navigate("Content" as never)} />
           </View>
           
         </FormBackground>
