@@ -12,6 +12,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 //Colheita
 import RegistroColheitaScreen from "../screens/Colheita/RegistroColheitaScreen";
+import ListagemColheitaScreen from "../screens/Colheita/ListagemColheitaScreen";
 
 //Produto
 import RegistroProdutoScreen from "../screens/Produto/RegistroProdutoScreen";
@@ -31,7 +32,14 @@ export default function AppNavigator() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        
+        {/*
+          Bloco de Colheita Resolvido:
+          Mantido RegistroColheita e adicionado ListagemColheita.
+        */}
         <Stack.Screen name="RegistroColheita" component={RegistroColheitaScreen} />
+        <Stack.Screen name="ListagemColheita" component={ListagemColheitaScreen} />
+        
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
         <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
         <Stack.Screen name="Content" component={ContentScreen} />

@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components
@@ -40,11 +39,11 @@ export default function RegistroColheitaScreen() {
 
   return (
     <SidebarLayout headerTitle="Registrar Colheita" menuItems={menuItems}>
-      <View>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <FormHeader
           title="Registrar Colheita"
           subtitle="Registre uma nova colheita"
-          onBack={() => navigation.navigate("Content" as never)}
+          onBack={() => navigation.navigate("ListagemColheita" as never)}
         />
 
         <FormBackground>
@@ -133,7 +132,7 @@ export default function RegistroColheitaScreen() {
         <RowCentralized marginTop={35}>
           <PrimaryButton title="Salvar Colheita" onPress={() => {}} />
         </RowCentralized>
-      </View>
+      </ScrollView>
     </SidebarLayout>
   );
 }
