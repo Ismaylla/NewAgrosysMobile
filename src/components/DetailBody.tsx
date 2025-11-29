@@ -1,4 +1,5 @@
 // src/components/DetailBody.tsx
+
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../theme/colors';
