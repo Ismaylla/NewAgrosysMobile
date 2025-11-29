@@ -1,27 +1,59 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 
-
 type Props = { 
-    placeholder?: string; 
-    value?: string; 
-    onChange?: (t: string) => void; 
-    label?: string 
+  placeholder?: string; 
+  value?: string; 
+  onChange?: (t: string) => void; 
+  label?: string;
+  editable?: boolean; 
 };
 
+export function Input({
+  placeholder,
+  value,
+  onChange,
+  label,
+  editable = true,
+}: Props) {
+  return (
+    <View style={styles.wrap}>
+      {label && <Text style={styles.label}>{label}</Text>}
 
-export function Input({ placeholder, value, onChange, label }: Props) {
-    return (
-        <View style={styles.wrap}>
-            {label && <Text style={styles.label}>{label}</Text>}
-            <TextInput value={value} onChangeText={onChange} placeholder={placeholder} style={styles.input} />
-        </View>
-    );
+      <TextInput
+        value={value}
+        onChangeText={onChange}
+        placeholder={placeholder}
+        editable={editable}
+        style={[
+          styles.input,
+          editable === false && styles.inputDisabled,
+        ]}
+      />
+    </View>
+  );
 }
 
-
 const styles = StyleSheet.create({
-    wrap: { marginVertical: 6 },
-    label: { marginBottom: 6, color: '#0d2610', fontWeight: '700' },
-    input: { backgroundColor: 'white', padding: 10, borderRadius: 8, marginBottom:20}
+  wrap: { 
+    marginVertical: 6 
+  },
+
+  label: { 
+    marginBottom: 6, 
+    color: '#0d2610', 
+    fontWeight: '700' 
+  },
+
+  input: { 
+    backgroundColor: 'white', 
+    padding: 10, 
+    borderRadius: 8, 
+    marginBottom: 20 
+  },
+
+  inputDisabled: { 
+    backgroundColor: '#eee', 
+    color: '#666' 
+  }
 });

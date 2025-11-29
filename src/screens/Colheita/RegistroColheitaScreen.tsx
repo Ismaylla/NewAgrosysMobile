@@ -124,7 +124,7 @@ export default function RegistroColheitaScreen() {
           />
 
           <RowCentralized marginTop={20}>
-            <CancelButton title="Cancelar" onPress={() => navigation.navigate("Content" as never)} />
+            <CancelButton title="Cancelar" onPress={() => navigation.navigate("ListagemColheitas" as never)} />
           </RowCentralized>
         </FormBackground>
 

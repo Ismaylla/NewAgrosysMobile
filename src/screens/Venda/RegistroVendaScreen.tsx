@@ -32,7 +32,7 @@ export default function RegistroVendaScreen() {
         <FormHeader
           title="Registrar Venda"
           subtitle="Registrar uma nova venda"
-          onBack={() => navigation.navigate("Home" as never)}
+          onBack={() => navigation.navigate("Content" as never)}
         />
 
         <FormBackground>
@@ -123,7 +123,7 @@ export default function RegistroVendaScreen() {
 
           {/* Botão Cancelar */}
           <RowCentralized marginTop={20}>
-            <CancelButton title="Cancelar" onPress={() => {}} />
+            <CancelButton title="Cancelar" onPress={() => navigation.goBack ()} />
           </RowCentralized>
         </FormBackground>
 

@@ -73,7 +73,6 @@ export default function SidebarLayout({
     <View style={styles.container}>
       <StatusBar style="light" backgroundColor={colors.primary} />
 
-      {/* HEADER */}
       <View style={[styles.topbar, { paddingTop: SAFE_TOP_PADDING }]}>
         <TouchableOpacity onPress={toggleSidebar}>
           <Ionicons
@@ -94,7 +93,6 @@ export default function SidebarLayout({
         </TouchableOpacity>
       </View>
 
-      {/* OVERLAY */}
       {open && (
         <Animated.View
           style={[
@@ -106,7 +104,6 @@ export default function SidebarLayout({
         </Animated.View>
       )}
 
-      {/* SIDEBAR */}
       <Animated.View
         style={[
           styles.sidebar,
@@ -125,9 +122,14 @@ export default function SidebarLayout({
         </View>
       </Animated.View>
 
-      {/* CONTENT AREA */}
-      <View style={[styles.page, { paddingTop: HEADER_HEIGHT + SAFE_TOP_PADDING }]}>
-        {children}
+      <View
+        style={[styles.page, { paddingTop: HEADER_HEIGHT + SAFE_TOP_PADDING }]}
+      >
+        {typeof children === "string" ? (
+          <RNText>{children}</RNText>
+        ) : (
+          <>{children}</>
+        )}
       </View>
     </View>
   );
