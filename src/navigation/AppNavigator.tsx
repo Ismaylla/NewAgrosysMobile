@@ -31,7 +31,7 @@ export default function AppNavigator() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="RegistroColheitas" component={RegistroColheitaScreen} />
+        <Stack.Screen name="RegistroColheita" component={RegistroColheitaScreen} />
         <Stack.Screen name="RegistroProdutos" component={RegistroProdutoScreen} />
         <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
         <Stack.Screen name="Content" component={ContentScreen} />
