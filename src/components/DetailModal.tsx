@@ -15,20 +15,24 @@ import { colors } from '../theme/colors';
 import { fontSizes, fontWeights, fontFamilies } from '../theme/fonts'; 
 import { spacing } from '../theme/spacing'; 
 
-// Definição das Props
+// Definição das Props ATUALIZADA
 interface DetailModalProps {
   isVisible: boolean;
   onClose: () => void;
   title: string;
-  // O children permite passar qualquer componente React para o corpo do modal
   children: React.ReactNode; 
+  // NOVAS PROPS OPCIONAIS para ações
+  onEdit?: () => void;
+  onDelete?: () => void;
 }
 
 const DetailModal: React.FC<DetailModalProps> = ({ 
   isVisible, 
   onClose, 
   title, 
-  children 
+  children,
+  onEdit, 
+  onDelete 
 }) => {
   return (
     <Modal
@@ -53,6 +57,28 @@ const DetailModal: React.FC<DetailModalProps> = ({
           <ScrollView style={styles.content}>
             {children}
           </ScrollView>
+
+          {/* NOVO: Seção de Ações (Botões: Editar e Excluir) */}
+          {(onEdit || onDelete) && (
+            <View style={styles.actionsContainer}>
+              {onEdit && (
+                <TouchableOpacity
+                  style={[styles.actionButton, styles.editButton]}
+                  onPress={onEdit}
+                >
+                  <Text style={styles.actionText}>Editar</Text>
+                </TouchableOpacity>
+              )}
+              {onDelete && (
+                <TouchableOpacity
+                  style={[styles.actionButton, styles.deleteButton]}
+                  onPress={onDelete}
+                >
+                  <Text style={styles.actionText}>Excluir</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          )}
           
         </View>
       </View>
@@ -91,7 +117,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: fontSizes.lg, 
-    // Correção de tipagem
     fontWeight: fontWeights.bold as any, 
     color: colors.primary, 
     fontFamily: fontFamilies.heading,
@@ -101,13 +126,47 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     fontSize: fontSizes.md,
-    // Correção de tipagem
     fontWeight: fontWeights.bold as any,
     color: colors.primaryDark,
   },
   content: {
     flexGrow: 1, 
+    marginBottom: spacing.md, // Espaço antes dos botões
   },
+
+  // NOVOS ESTILOS PARA AÇÕES (BOTÕES)
+  actionsContainer: {
+    alignItems: 'center', 
+    paddingTop: spacing.sm,
+    // Adicionado padding horizontal para garantir que os botões não ultrapassem o padding original do modal
+    paddingHorizontal: spacing.sm, 
+  },
+  actionButton: {
+    width: '100%', 
+    paddingVertical: spacing.sm, 
+    borderRadius: spacing.xs,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: spacing.sm, 
+    
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 5,
+  },
+  editButton: {
+    backgroundColor: colors.primary, // Verde Escuro
+  },
+  deleteButton: {
+    // Usando primaryDark para um contraste sutil ou colors.red se o seu tema usar
+    backgroundColor: colors.primaryDark, 
+  },
+  actionText: {
+    color: colors.white,
+    fontSize: fontSizes.md,
+    fontWeight: fontWeights.bold as any,
+  }
 });
 
 export default DetailModal;
