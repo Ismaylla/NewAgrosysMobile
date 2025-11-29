@@ -11,16 +11,14 @@ import {
 } from 'react-native';
 import { colors } from "../theme/colors";
 import { useNavigation } from '@react-navigation/native';
-import { Logo } from '../components/Logo'
-import { FormTitle } from '../components/FormTitle'
+import { Logo } from '../components/Logo';
+import { FormTitle } from '../components/FormTitle';
 import Checkbox from 'expo-checkbox';
 import { BackButton } from '../components/BackButton';
-import { FormBackground } from '../components/FormBackground'
+import { FormBackground } from '../components/FormBackground';
 
-
-import {Input} from '../components/Input';
-import {PrimaryButton} from '../components/PrimaryButton';
-
+import { Input } from '../components/Input';
+import { PrimaryButton } from '../components/PrimaryButton';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -29,7 +27,6 @@ export default function LoginScreen() {
   const [lembrar, setLembrar] = useState(false);
 
   const navigation = useNavigation();
-  
 
   return (
     <KeyboardAvoidingView
@@ -43,9 +40,8 @@ export default function LoginScreen() {
       >
 
         <View style={styles.topWrapper}>
-          <Logo width={90}/>
+          <Logo width={90} />
         </View>
-
 
         <FormBackground>
           <FormTitle children='LOGIN' />
@@ -80,15 +76,19 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.justifyButton}>
-            <PrimaryButton title="ENTRAR" onPress={() => navigation.navigate("RegistroVendas" as never)} />
+            <PrimaryButton
+              title="ENTRAR"
+              onPress={() => navigation.navigate("Content" as never)}
+            />
           </View>
-          
+
         </FormBackground>
+
         <View style={[styles.flex, styles.footer]}>
-          <BackButton onPress={() => navigation.navigate("Home" as never)}/>
+          <BackButton onPress={() => navigation.navigate("Home" as never)} />
         </View>
       </ScrollView>
-      
+
     </KeyboardAvoidingView>
   );
 }
@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 20,
-    
   },
 
   checkboxRow: {
@@ -152,7 +151,6 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     justifyContent: 'flex-end',
-    paddingBottom: 60
+    paddingBottom: 60,
   }
-
 });
