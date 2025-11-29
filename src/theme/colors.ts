@@ -3,5 +3,6 @@ export const colors = {
   primary: "#1F5D2E",
   primaryDark: "#0E3B1A",
   white: "#FFFFFF",
-  cardGray: "#e1e3d7"
+  cardGray: "#e1e3d7",
+  red: "#FF0000",
 };

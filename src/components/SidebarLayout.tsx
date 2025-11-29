@@ -10,6 +10,7 @@ import {
   Pressable,
   Platform,
   StatusBar,
+  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
@@ -138,7 +139,12 @@ export default function SidebarLayout({
       </Animated.View>
 
       {/* CONTEÚDO */}
-      <View style={styles.page}>{children}</View>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.page}>{children}</View>
+      </ScrollView>
     </View>
   );
 }
@@ -196,5 +202,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: colors.background,
+    paddingBottom: 70
   },
 });

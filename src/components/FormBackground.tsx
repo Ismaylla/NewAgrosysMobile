@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
     card: {
       backgroundColor: colors.cardGray,
       borderRadius: CARD_RADIUS,
-      paddingHorizontal: 24,
+      paddingHorizontal: 10,
       paddingTop: 22,
       paddingBottom: 36,
       minHeight: 200,
       minWidth: '85%',
+      maxWidth: '100%',
       // shadow Android/iOS
       shadowColor: '#000',
       shadowOpacity: 0.1,
