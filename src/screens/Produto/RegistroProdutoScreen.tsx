@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components
@@ -28,13 +28,22 @@ export default function RegistroProdutoScreen() {
   const [descricao, setDescricao] = useState('');
   const navigation = useNavigation();
 
+  const menuItems = [
+    {title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos" as never),},
+    {title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas" as never),},
+    { title: "Gestão de Vendas", onPress: () => {} },
+
+    { title: "Meu Perfil", onPress: () => {} },
+    { title: "Sair", onPress: () => navigation.navigate("Home" as never) },
+  ];
+
   return (
-    <SidebarLayout>
-      <View>
+    <SidebarLayout headerTitle="Registrar Produto" menuItems={menuItems}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <FormHeader
           title="Registrar Produto"
           subtitle="Registre um novo produto"
-          onBack={() => navigation.navigate("Home" as never)}
+          onBack={() => navigation.navigate("ListagemProdutos" as never)}
         />
 
         <FormBackground>
@@ -128,7 +137,7 @@ export default function RegistroProdutoScreen() {
         <RowCentralized marginTop={35}>
           <PrimaryButton title="Registrar Produto" onPress={() => {}} />
         </RowCentralized>
-      </View>
+      </ScrollView>
     </SidebarLayout>
   );
 }
