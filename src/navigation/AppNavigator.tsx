@@ -20,6 +20,7 @@ import ListagemProdutoScreen from "../screens/Produto/ListagemProdutoScreen";
 
 // Venda
 import RegistroVendaScreen from "../screens/Venda/RegistroVendaScreen";
+import ListagemVendaScreen from "../screens/Venda/ListagemVendaScreen";
 
 // Perfil
 import ProfileScreen from "../screens/Perfil/ProfileScreen";
@@ -46,6 +47,7 @@ export default function AppNavigator() {
 
       {/* Vendas */}
       <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
+      <Stack.Screen name="ListagemVendas" component={ListagemVendaScreen} />
 
       {/* Perfil */}
       <Stack.Screen name="Perfil" component={ProfileScreen} />

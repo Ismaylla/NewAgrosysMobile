@@ -31,7 +31,7 @@ export default function RegistroVendaScreen() {
     <SidebarLayout headerTitle="Gestão de Vendas">
       <View>
 
-        {/* ✅ HEADER COM BOTÃO DE VOLTAR FUNCIONANDO */}
+        {/*  HEADER */}
         <FormHeader
           title="Registrar Venda"
           subtitle="Registrar uma nova venda"
