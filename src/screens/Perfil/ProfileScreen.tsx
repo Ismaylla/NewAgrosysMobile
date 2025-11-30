@@ -15,26 +15,17 @@ import { ProfileAvatar } from "../../components/ProfileAvatar";
 import { UserInfo } from "../../components/UserInfo";
 import { FormHeader } from "../../components/FormHeader";
 
-// 🔹 Menu lateral
-const getMenuItems = (navigation: any) => [
-  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
-  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
-  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
-  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
-  { title: "Sair", onPress: () => navigation.navigate("Home") },
-];
-
 export default function ProfileScreen() {
   const navigation = useNavigation() as any;
   const { height } = Dimensions.get("window");
 
-  // ✅ USUÁRIO VINDO DO CONTEXT (BACKEND FUTURO)
+  // USUÁRIO VINDO DO CONTEXT (BACKEND FUTURO)
   const { user } = useAuth();
 
   return (
-    <SidebarLayout headerTitle="Meu Perfil" menuItems={getMenuItems(navigation)}>
+    <SidebarLayout headerTitle="Meu Perfil">
       
-      {/* ✅ HEADER COM BOTÃO DE VOLTAR FUNCIONANDO */}
+      {/* HEADER*/}
       <FormHeader
         title="Meu Perfil"
         subtitle="Visualize seus dados"
@@ -43,15 +34,15 @@ export default function ProfileScreen() {
 
       <View style={[styles.container, { paddingTop: height * 0.05 }]}>
 
-        {/* ✅ ÍCONE DE PERFIL DO FIGMA */}
+        {/* ÍCONE DE PERFIL DO FIGMA */}
         <View style={styles.avatarWrapper}>
           <ProfileAvatar />
         </View>
 
-        {/* ✅ TÍTULO */}
+        {/* TÍTULO */}
         <Text style={styles.title}>MEUS DADOS</Text>
 
-        {/* ✅ CARD COM INFORMAÇÕES */}
+        {/* CARD COM INFORMAÇÕES */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Informações do Usuário</Text>
 
@@ -59,7 +50,7 @@ export default function ProfileScreen() {
           <UserInfo label="Email" value={user?.email || "Não informado"} />
           <UserInfo label="Perfil" value={user?.perfil || "Usuário"} />
 
-          {/* ✅ BOTÃO CENTRALIZADO */}
+          {/* BOTÃO CENTRALIZADO */}
           <View style={styles.buttonWrapper}>
             <PrimaryButton
               title="Editar Dados"

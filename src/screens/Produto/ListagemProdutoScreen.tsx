@@ -41,14 +41,6 @@ const MOCK_PRODUTOS: ProdutoItem[] = [
   }
 ];
 
-const getMenuItems = (navigation: any) => [
-  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
-  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
-  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
-  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
-  { title: "Sair", onPress: () => navigation.navigate("Home") }
-];
-
 const formatDataToDetailBody = (item: ProdutoItem | null) => {
   if (!item) return [];
   return [
@@ -88,7 +80,7 @@ export default function ListagemProdutoScreen() {
   };
 
   return (
-    <SidebarLayout headerTitle="Gestão de Produtos" menuItems={getMenuItems(navigation)}>
+    <SidebarLayout headerTitle="Gestão de Produtos">
 
       <FormHeader
         title="Gestão de Produtos"

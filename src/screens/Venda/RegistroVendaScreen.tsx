@@ -15,15 +15,6 @@ import { CancelButton } from "../../components/CancelButton";
 import { RowCentralized } from "../../components/RowCentralized";
 import { FormHeader } from "../../components/FormHeader";
 
-// ✅ Menu lateral
-const getMenuItems = (navigation: any) => [
-  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
-  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
-  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
-  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
-  { title: "Sair", onPress: () => navigation.navigate("Home") },
-];
-
 export default function RegistroVendaScreen() {
   const navigation = useNavigation() as any;
 
@@ -37,7 +28,7 @@ export default function RegistroVendaScreen() {
   const [desconto, setDesconto] = useState("");
 
   return (
-    <SidebarLayout headerTitle="Gestão de Vendas" menuItems={getMenuItems(navigation)}>
+    <SidebarLayout headerTitle="Gestão de Vendas">
       <View>
 
         {/* ✅ HEADER COM BOTÃO DE VOLTAR FUNCIONANDO */}

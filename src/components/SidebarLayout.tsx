@@ -29,13 +29,23 @@ const { width } = Dimensions.get("window");
 const SIDEBAR_WIDTH = 220;
 const HEADER_HEIGHT = 100;
 
+const getDefaultMenuItems = (navigation: any) => [
+  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
+  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
+  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
+  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
+  { title: "Sair", onPress: () => navigation.navigate("Home") },
+];
+
 export default function SidebarLayout({
   children,
   headerTitle = "AGROSYS",
-  menuItems = [],
+  menuItems,
 }: SidebarLayoutProps) {
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
+
+  const items = menuItems ?? getDefaultMenuItems(navigation);
 
   const animatedX = useRef(new Animated.Value(-SIDEBAR_WIDTH)).current;
   const overlayOpacity = useRef(new Animated.Value(0)).current;
@@ -114,7 +124,7 @@ export default function SidebarLayout({
         ]}
       >
         <View style={styles.sidebarContent}>
-          {menuItems.map((item, index) => (
+          {items.map((item, index) => (
             <View key={index} style={{ marginBottom: spacing.lg }}>
               <MenuButton title={item.title} onPress={item.onPress} />
             </View>

@@ -46,17 +46,6 @@ const MOCK_COLHEITAS: ColheitaItem[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/* MENU LATERAL                                                                */
-/* -------------------------------------------------------------------------- */
-const getMenuItems = (navigation: any) => [
-  { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
-  { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
-  { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda") },
-  { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
-  { title: "Sair", onPress: () => navigation.navigate("Home") },
-];
-
-/* -------------------------------------------------------------------------- */
 /* FORMATADOR PARA O DETAIL BODY                                               */
 /* -------------------------------------------------------------------------- */
 const formatDataToDetailBody = (item: ColheitaItem | null): DetailItemProps[] => {
@@ -106,7 +95,7 @@ export default function ListagemColheitaScreen() {
   };
 
   return (
-    <SidebarLayout headerTitle="Gestão de Colheitas" menuItems={getMenuItems(navigation)}>
+    <SidebarLayout headerTitle="Gestão de Colheitas">
       {/* CABEÇALHO */}
       <FormHeader
         title="Gestão de Colheitas"

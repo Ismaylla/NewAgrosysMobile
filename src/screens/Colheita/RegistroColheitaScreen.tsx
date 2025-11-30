@@ -27,16 +27,8 @@ export default function RegistroColheitaScreen() {
 
   const navigation = useNavigation();
 
-  const menuItems = [
-    {title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos" as never),},
-    {title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas" as never),},
-    { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda" as never) },
-    { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil" as never) },
-    { title: "Sair", onPress: () => navigation.navigate("Home" as never) },
-  ];
-
   return (
-    <SidebarLayout headerTitle="Registrar Colheita" menuItems={menuItems}>
+    <SidebarLayout headerTitle="Registrar Colheita">
       <ScrollView showsVerticalScrollIndicator={false}>
         <FormHeader
           title="Registrar Colheita"
