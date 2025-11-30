@@ -1,23 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+import { Feather } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
+
+/* ✅ Tipo correto para os nomes dos ícones */
+type FeatherIconName = React.ComponentProps<typeof Feather>["name"];
+
 interface Field {
   label: string;
   value: string | number;
-  icon?: string; // ← ícone opcional
+  icon?: FeatherIconName;
 }
 
 interface CardListItemProps {
   title: string;
-  titleIcon?: string; // ← ícone no título ("info", "chevron-right", "external-link")
+  titleIcon?: FeatherIconName;
   fields: Field[];
   onPress: () => void;
 }
 
 export function CardListItem({
   title,
-  titleIcon = "info", // ← ícone padrão
+  titleIcon = "info",
   fields,
   onPress,
 }: CardListItemProps) {
@@ -27,49 +31,52 @@ export function CardListItem({
       {/* Título + ícone */}
       <View style={styles.headerRow}>
         <Text style={styles.title}>{title}</Text>
-        <Feather name={titleIcon} size={20} color= "colors.primaryDark" />
+        <Feather
+          name={titleIcon}
+          size={20}
+          color={colors.primaryDark}
+        />
       </View>
 
-{/* Campos */}
-{fields.map((field, index) => (
-  <View key={index} style={styles.fieldRow}>
-    
-    {/* Ícone representando o conteúdo */}
-    <Feather
-      name={field.icon ?? "circle"} // ícone padrão caso não venha nada
-      size={18}
-      color="colors.primaryDark"
-      style={styles.fieldIcon}
-    />
+      {/* Campos */}
+      {fields.map((field, index) => (
+        <View key={index} style={styles.fieldRow}>
+          
+          {/* Ícone */}
+          <Feather
+            name={field.icon ?? "circle"}
+            size={18}
+            color={colors.primaryDark}
+            style={styles.fieldIcon}
+          />
 
-    {/* Textos */}
-    <View>
-      <Text style={styles.fieldValue}>{field.value}</Text>
-    </View>
+          {/* Valor */}
+          <View>
+            <Text style={styles.fieldValue}>
+              {String(field.value)}
+            </Text>
+          </View>
 
-  </View>
-))}
-
+        </View>
+      ))}
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-  backgroundColor: "#fff",
-  borderRadius: 14,
-  paddingHorizontal: 14,
-  paddingVertical: 18,
-  marginBottom: 18,
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 18,
+    marginBottom: 18,
 
-  // ANDROID
-  elevation: 3,
+    elevation: 3,
 
-  // iOS
-  shadowColor: "#000",
-  shadowOpacity: 0.12,
-  shadowOffset: { width: 0, height: 2 },
-  shadowRadius: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.12,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
   },
 
   headerRow: {
@@ -93,12 +100,6 @@ const styles = StyleSheet.create({
 
   fieldIcon: {
     marginRight: 6,
-  },
-
-  fieldLabel: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#666",
   },
 
   fieldValue: {

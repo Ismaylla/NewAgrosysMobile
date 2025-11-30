@@ -30,9 +30,8 @@ export default function RegistroColheitaScreen() {
   const menuItems = [
     {title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos" as never),},
     {title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas" as never),},
-    { title: "Gestão de Vendas", onPress: () => {} },
-
-    { title: "Meu Perfil", onPress: () => {} },
+    { title: "Gestão de Vendas", onPress: () => navigation.navigate("RegistroVenda" as never) },
+    { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil" as never) },
     { title: "Sair", onPress: () => navigation.navigate("Home" as never) },
   ];
 
@@ -124,12 +123,12 @@ export default function RegistroColheitaScreen() {
           />
 
           <RowCentralized marginTop={20}>
-            <CancelButton title="Cancelar" onPress={() => navigation.navigate("Content" as never)} />
+            <CancelButton title="Cancelar" onPress={() => navigation.navigate("ListagemColheitas" as never)} />
           </RowCentralized>
         </FormBackground>
 
         <RowCentralized marginTop={35}>
-          <PrimaryButton title="Salvar Colheita" onPress={() => {}} />
+          <PrimaryButton title="Salvar Colheita" onPress={() => navigation.navigate("ListagemColheitas" as never)} />
         </RowCentralized>
       </ScrollView>
     </SidebarLayout>
