@@ -35,7 +35,7 @@ const getDefaultMenuItems = (navigation: any) => [
   { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
   { title: "Gestão de Vendas", onPress: () => navigation.navigate("ListagemVendas") },
   { title: "Gestão de Notas", onPress: () => navigation.navigate("ListagemNotas") },
-  { title: "Gestão de UAPs", onPress: () => navigation.navigate("") },
+  { title: "Gestão de UAPs", onPress: () => navigation.navigate("ListagemUap") },
   { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
   { title: "Sair", onPress: () => navigation.navigate("Home") },
 ];
@@ -49,6 +49,9 @@ export default function SidebarLayout({
   const [open, setOpen] = useState(false);
 
   const items = menuItems ?? getDefaultMenuItems(navigation);
+
+  const topItems = items.slice(0, 5);   
+  const bottomItems = items.slice(5);
 
   const animatedX = useRef(new Animated.Value(-SIDEBAR_WIDTH)).current;
   const overlayOpacity = useRef(new Animated.Value(0)).current;
@@ -126,13 +129,27 @@ export default function SidebarLayout({
           },
         ]}
       >
-        <View style={styles.sidebarContent}>
-          {items.map((item, index) => (
+      <View style={styles.sidebarContent}>
+        
+        {/* ITENS DO TOPO */}
+        <View>
+          {topItems.map((item, index) => (
             <View key={index} style={{ marginBottom: spacing.lg }}>
               <MenuButton title={item.title} onPress={item.onPress} />
             </View>
           ))}
         </View>
+
+        {/* ITENS FIXOS NO RODAPÉ */}
+        <View style={styles.bottomSection}>
+          {bottomItems.map((item, index) => (
+            <View key={index} style={{ marginBottom: spacing.lg }}>
+              <MenuButton title={item.title} onPress={item.onPress} />
+            </View>
+          ))}
+        </View>
+      </View>
+
       </Animated.View>
 
       <View
@@ -184,9 +201,14 @@ const styles = StyleSheet.create({
   },
 
   sidebarContent: {
+    flex: 1,
+    justifyContent: "space-between", // empurra topo e rodapé
     paddingTop: spacing.md,
     paddingHorizontal: spacing.md,
-    flexGrow: 1,
+  },
+
+  bottomSection: {
+  marginBottom: spacing.lg,
   },
 
   page: {

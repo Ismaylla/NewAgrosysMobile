@@ -22,6 +22,10 @@ import ListagemProdutoScreen from "../screens/Produto/ListagemProdutoScreen";
 import RegistroVendaScreen from "../screens/Venda/RegistroVendaScreen";
 import ListagemVendaScreen from "../screens/Venda/ListagemVendaScreen";
 
+// UAP
+import RegistroUapScreen from "../screens/Uap/RegistroUapScreen";
+import ListagemUapScreen from "../screens/Uap/ListagemUapScreen";
+
 // Perfil
 import ProfileScreen from "../screens/Perfil/ProfileScreen";
 
@@ -51,6 +55,11 @@ export default function AppNavigator() {
       {/* Vendas */}
       <Stack.Screen name="RegistroVenda" component={RegistroVendaScreen} />
       <Stack.Screen name="ListagemVendas" component={ListagemVendaScreen} />
+
+      {/*Uap*/}
+      <Stack.Screen name="RegistroUap" component={RegistroUapScreen} />
+      <Stack.Screen name="ListagemUap" component={ListagemUapScreen} />
+
 
       {/* Perfil */}
       <Stack.Screen name="Perfil" component={ProfileScreen} />
