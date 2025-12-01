@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -94,6 +95,12 @@ export default function ListagemColheitaScreen() {
     }
   };
 
+  /* ✅ ADICIONADO: ação do botão Excluir (apenas fecha o modal) */
+  const handleDelete = () => {
+    handleCloseDetailModal();
+  };
+  /* ---------------------------------------------------------------------- */
+
   return (
     <SidebarLayout headerTitle="Gestão de Colheitas">
       {/* CABEÇALHO */}
@@ -183,7 +190,8 @@ export default function ListagemColheitaScreen() {
             : "Detalhes da Colheita"
         }
         onEdit={handleEdit}
-        onDelete={() => {}}
+        /* ✅ AJUSTADO: agora o botão Excluir fecha o modal corretamente */
+        onDelete={handleDelete}
       >
         {selectedColheita ? (
           <DetailBody data={formatDataToDetailBody(selectedColheita)} />

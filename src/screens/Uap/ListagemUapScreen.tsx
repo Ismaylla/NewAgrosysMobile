@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -77,6 +78,12 @@ export default function ListagemUapScreen() {
     }
   };
 
+  /* ✅ ADICIONADO: ação do botão Excluir (apenas fecha o modal) */
+  const handleDelete = () => {
+    handleCloseDetailModal();
+  };
+  /* ---------------------------------------------------------------------- */
+
   return (
     <SidebarLayout headerTitle="Gestão de UAPs">
 
@@ -148,7 +155,8 @@ export default function ListagemUapScreen() {
         onClose={handleCloseDetailModal}
         title={selectedUap ? `Detalhes: ${selectedUap.nome}` : "Detalhes da UAP"}
         onEdit={handleEdit}
-        onDelete={() => {}}
+        /* ✅ AJUSTADO: agora o botão Excluir fecha o modal corretamente */
+        onDelete={handleDelete}
       >
         {selectedUap ? (
           <DetailBody data={formatDataToDetailBody(selectedUap)} />

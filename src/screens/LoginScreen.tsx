@@ -1,3 +1,4 @@
+
 // src/screens/Login/LoginScreen.tsx
 import React, { useState } from 'react';
 import {
@@ -8,6 +9,7 @@ import {
   Platform,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import { colors } from "../theme/colors";
 import { useNavigation } from '@react-navigation/native';
@@ -23,10 +25,37 @@ import { PrimaryButton } from '../components/PrimaryButton';
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [showPass, setShowPass] = useState(false);
   const [lembrar, setLembrar] = useState(false);
+  const [showPass, setShowPass] = useState(false); // controle da visualização da senha
 
   const navigation = useNavigation();
+
+  // ✅ Validação de e-mail
+  const validarEmail = (email: string) => {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
+
+  // ✅ AÇÃO DO BOTÃO
+  const handleLogin = () => {
+    if (!validarEmail(email)) {
+      Alert.alert(
+        "E-mail inválido",
+        "Digite um e-mail em formato válido (ex: nome@gmail.com)"
+      );
+      return;
+    }
+
+    if (senha.length < 8) {
+      Alert.alert(
+        "Senha inválida",
+        "A senha deve conter no mínimo 8 caracteres."
+      );
+      return;
+    }
+
+    navigation.navigate("Content" as never);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -58,7 +87,18 @@ export default function LoginScreen() {
             placeholder="Senha"
             value={senha}
             onChange={setSenha}
+            secureTextEntry={!showPass} // ver senha ou não
           />
+
+          {/* ✅ CAIXINHA DE MOSTRAR SENHA */}
+          <View style={styles.showPassRow}>
+            <Checkbox
+              value={showPass}
+              onValueChange={setShowPass}
+              color={showPass ? colors.primary : undefined}
+            />
+            <Text style={styles.checkboxLabel}>Mostrar senha</Text>
+          </View>
 
           <View style={styles.rowBetween}>
             <View style={styles.checkboxRow}>
@@ -76,9 +116,9 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.justifyButton}>
-
             <PrimaryButton
-              title="ENTRAR" onPress={() => navigation.navigate("Content" as never)}
+              title="ENTRAR"
+              onPress={handleLogin}
             />
           </View>
 
@@ -109,12 +149,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  forgotRow: {
-    alignItems: 'flex-end',
-    marginTop: 8,
-    marginBottom: 6,
-  },
-
   forgotText: {
     color: '#1D4528',
     fontWeight: '600',
@@ -137,6 +171,12 @@ const styles = StyleSheet.create({
   checkboxRow: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  showPassRow: { // ✅ linha nova
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
   },
 
   checkboxLabel: {

@@ -12,7 +12,6 @@ import { Text } from "../../components/Text";
 import DetailModal from "../../components/DetailModal";
 import { DetailBody } from "../../components/DetailBody";
 
-
 interface ProdutoItem {
   id: string;
   nome: string;
@@ -79,6 +78,12 @@ export default function ListagemProdutoScreen() {
     }
   };
 
+  /* ✅ ADICIONADO: ação do botão Excluir (apenas fecha o modal) */
+  const handleDelete = () => {
+    handleCloseDetailModal();
+  };
+  /* ---------------------------------------------------------------------- */
+
   return (
     <SidebarLayout headerTitle="Gestão de Produtos">
 
@@ -144,7 +149,8 @@ export default function ListagemProdutoScreen() {
         onClose={handleCloseDetailModal}
         title={selectedProduto ? `Detalhes: ${selectedProduto.nome}` : "Detalhes do Produto"}
         onEdit={handleEdit}
-        onDelete={() => {}}
+        /* ✅ AJUSTADO: agora o botão Excluir fecha o modal corretamente */
+        onDelete={handleDelete}
       >
         {selectedProduto ? (
           <DetailBody data={formatDataToDetailBody(selectedProduto)} />
