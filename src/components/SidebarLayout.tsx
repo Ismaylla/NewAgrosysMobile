@@ -34,7 +34,7 @@ const getDefaultMenuItems = (navigation: any) => [
   { title: "Gestão de Produtos", onPress: () => navigation.navigate("ListagemProdutos") },
   { title: "Gestão de Colheitas", onPress: () => navigation.navigate("ListagemColheitas") },
   { title: "Gestão de Vendas", onPress: () => navigation.navigate("ListagemVendas") },
-  { title: "Gestão de Notas", onPress: () => navigation.navigate("") },
+  { title: "Gestão de Notas", onPress: () => navigation.navigate("ListagemNotas") },
   { title: "Gestão de UAPs", onPress: () => navigation.navigate("") },
   { title: "Meu Perfil", onPress: () => navigation.navigate("Perfil") },
   { title: "Sair", onPress: () => navigation.navigate("Home") },

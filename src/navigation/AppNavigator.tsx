@@ -25,6 +25,9 @@ import ListagemVendaScreen from "../screens/Venda/ListagemVendaScreen";
 // Perfil
 import ProfileScreen from "../screens/Perfil/ProfileScreen";
 
+//Notas
+import ListagemNotasScreen from "../screens/Notas/ListagemNotasScreen";
+
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
@@ -51,6 +54,9 @@ export default function AppNavigator() {
 
       {/* Perfil */}
       <Stack.Screen name="Perfil" component={ProfileScreen} />
+
+      {/* Notas */}
+      <Stack.Screen name="ListagemNotas" component={ListagemNotasScreen} />
 
       <Stack.Screen name="Content" component={ContentScreen} />
     </Stack.Navigator>
