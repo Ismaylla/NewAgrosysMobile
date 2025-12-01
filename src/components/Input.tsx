@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 
@@ -6,7 +8,9 @@ type Props = {
   value?: string; 
   onChange?: (t: string) => void; 
   label?: string;
-  editable?: boolean; 
+  editable?: boolean;
+
+  secureTextEntry?: boolean; // ADICIONADO: permite campo de senha
 };
 
 export function Input({
@@ -15,6 +19,7 @@ export function Input({
   onChange,
   label,
   editable = true,
+  secureTextEntry = false, // ADICIONADO: valor padrão
 }: Props) {
   return (
     <View style={styles.wrap}>
@@ -25,6 +30,7 @@ export function Input({
         onChangeText={onChange}
         placeholder={placeholder}
         editable={editable}
+        secureTextEntry={secureTextEntry} // ADICIONADO: ativa máscara da senha
         style={[
           styles.input,
           editable === false && styles.inputDisabled,
