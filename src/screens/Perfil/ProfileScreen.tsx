@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  // ✅ Wrapper pra centralizar o botão
   buttonWrapper: {
     marginTop: 20,
     alignItems: "center",

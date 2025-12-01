@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components
@@ -14,6 +14,7 @@ import { PrimaryButton } from "../../components/PrimaryButton";
 import { CancelButton } from "../../components/CancelButton";
 import { RowCentralized } from "../../components/RowCentralized";
 import { FormHeader } from "../../components/FormHeader";
+import SaleSuccessModal from "../../components/SaleSuccessModal";
 
 export default function RegistroVendaScreen() {
   const navigation = useNavigation() as any;
@@ -27,11 +28,26 @@ export default function RegistroVendaScreen() {
   const [precoUnitario, setPrecoUnitario] = useState("");
   const [desconto, setDesconto] = useState("");
 
+  const [modalSuccessVisible, setModalSuccessVisible] = useState(false);
+  const handleSave = async () => {
+    try {
+      setModalSuccessVisible(true);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível salvar a venda. Tente novamente.");
+      console.error("Erro ao salvar venda:", error);
+    }
+  };
+
+  const handleGoToNotesPage = () => {
+    setModalSuccessVisible(false);
+    navigation.navigate("ListagemNotas"); 
+  };
+
   return (
     <SidebarLayout headerTitle="Gestão de Vendas">
-      <View>
+      <ScrollView showsVerticalScrollIndicator={false}>
 
-        {/* ✅ HEADER COM BOTÃO DE VOLTAR FUNCIONANDO */}
+        {/*  HEADER */}
         <FormHeader
           title="Registrar Venda"
           subtitle="Registrar uma nova venda"
@@ -134,7 +150,7 @@ export default function RegistroVendaScreen() {
             editable={false}
           />
 
-          {/* ✅ Botão Cancelar agora volta corretamente */}
+          {/*Botão Cancelar */}
           <RowCentralized marginTop={20}>
             <CancelButton title="Cancelar" onPress={() => navigation.goBack()} />
           </RowCentralized>
@@ -142,10 +158,17 @@ export default function RegistroVendaScreen() {
 
         {/* Botão Salvar */}
         <RowCentralized marginTop={35}>
-          <PrimaryButton title="Salvar Venda" onPress={() => {}} />
+          <PrimaryButton title="Salvar Venda" onPress={handleSave} />
         </RowCentralized>
 
-      </View>
+      </ScrollView>
+
+      <SaleSuccessModal
+        isVisible={modalSuccessVisible}
+        onClose={() => setModalSuccessVisible(false)}
+        onGoToNotesPage={handleGoToNotesPage}
+      />
+
     </SidebarLayout>
   );
 }
